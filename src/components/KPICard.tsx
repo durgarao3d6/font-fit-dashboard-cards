@@ -29,9 +29,9 @@ const KPICard: React.FC<KPICardProps> = ({
 }) => {
   const getIcon = () => {
     switch (title.toLowerCase()) {
-      case 'exceptions': return <FileText className="w-6 h-6 text-blue-500" />;
-      case 'expedites': return <Clock className="w-6 h-6 text-blue-500" />;
-      case 'orders': return <Calendar className="w-6 h-6 text-blue-500" />;
+      case 'exceptions': return <FileText className="kpi-icon text-blue-500" />;
+      case 'expedites': return <Clock className="kpi-icon text-blue-500" />;
+      case 'orders': return <Calendar className="kpi-icon text-blue-500" />;
       default: return null;
     }
   };
@@ -47,21 +47,21 @@ const KPICard: React.FC<KPICardProps> = ({
   if (type === 'orders') {
     return (
       <Card className={`kpi-card h-full w-full overflow-hidden bg-blue-50 border-blue-200 ${className}`}>
-        <CardContent className="kpi-content p-6 h-full flex flex-col justify-between">
-          <div className="flex items-center gap-3 mb-4">
+        <CardContent className="kpi-content h-full flex flex-col justify-between">
+          <div className="flex items-center kpi-gap">
             {getIcon()}
-            <div className="kpi-title font-semibold text-gray-800">
+            <div className="kpi-title text-gray-800">
               {title}
             </div>
           </div>
           
           <div className="flex-1 flex flex-col items-center justify-center">
-            <div className="w-24 h-24 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <Calendar className="w-12 h-12 text-blue-400" />
+            <div className="bg-blue-100 rounded-lg flex items-center justify-center kpi-margin" style={{ width: '20cqw', height: '20cqw' }}>
+              <Calendar className="text-blue-400" style={{ width: '12cqw', height: '12cqw' }} />
             </div>
             <Button 
               onClick={onCreateOrder}
-              className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-medium"
+              className="kpi-button bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
             >
               Create Order
             </Button>
@@ -74,21 +74,21 @@ const KPICard: React.FC<KPICardProps> = ({
   if (type === 'detailed') {
     return (
       <Card className={`kpi-card h-full w-full overflow-hidden bg-white border-blue-200 ${className}`}>
-        <CardContent className="kpi-content p-6 h-full">
-          <div className="flex items-center gap-3 mb-6">
+        <CardContent className="kpi-content h-full">
+          <div className="flex items-center kpi-gap kpi-margin">
             {getIcon()}
-            <div className="kpi-title font-semibold text-gray-800">
+            <div className="kpi-title text-gray-800">
               {title}
             </div>
           </div>
           
           {value && (
-            <div className="text-center mb-6">
-              <div className="kpi-value font-bold text-orange-500 mb-2">
+            <div className="text-center kpi-margin">
+              <div className="kpi-value text-orange-500 kpi-margin">
                 {value}
               </div>
               {subtitle && (
-                <div className="text-gray-600 text-sm">
+                <div className="kpi-subtitle text-gray-600">
                   {subtitle}
                 </div>
               )}
@@ -96,16 +96,18 @@ const KPICard: React.FC<KPICardProps> = ({
           )}
 
           {stats.length > 0 && (
-            <div className="space-y-3">
+            <div style={{ marginTop: '3cqw' }}>
               <hr className="border-gray-200" />
-              {stats.map((stat, index) => (
-                <div key={index} className="flex items-center justify-between">
-                  <span className="text-gray-600 text-sm">{stat.label}</span>
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {stat.value}
-                  </span>
-                </div>
-              ))}
+              <div style={{ marginTop: '2cqw', display: 'flex', flexDirection: 'column', gap: '2cqw' }}>
+                {stats.map((stat, index) => (
+                  <div key={index} className="flex items-center justify-between">
+                    <span className="kpi-stats-label text-gray-600">{stat.label}</span>
+                    <span className="kpi-stats-value bg-blue-100 text-blue-800 rounded-full" style={{ padding: '1cqw 2cqw' }}>
+                      {stat.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </CardContent>
@@ -115,27 +117,27 @@ const KPICard: React.FC<KPICardProps> = ({
 
   return (
     <Card className={`kpi-card h-full w-full overflow-hidden bg-white border-blue-200 ${className}`}>
-      <CardContent className="kpi-content p-6 h-full flex flex-col">
-        <div className="flex items-center gap-3 mb-4">
+      <CardContent className="kpi-content h-full flex flex-col">
+        <div className="flex items-center kpi-gap kpi-margin">
           {getIcon()}
-          <div className="kpi-title font-semibold text-gray-800">
+          <div className="kpi-title text-gray-800">
             {title}
           </div>
         </div>
         
         <div className="flex-1 flex flex-col justify-center text-center">
-          <div className="kpi-value font-bold text-orange-500 mb-2">
+          <div className="kpi-value text-orange-500 kpi-margin">
             {value}
           </div>
           
           {subtitle && (
-            <div className="text-gray-600 text-sm">
+            <div className="kpi-subtitle text-gray-600">
               {subtitle}
             </div>
           )}
 
           {trendValue && (
-            <div className={`mt-2 text-sm ${getTrendColor()}`}>
+            <div className={`kpi-margin kpi-subtitle ${getTrendColor()}`}>
               {trendValue}
             </div>
           )}
