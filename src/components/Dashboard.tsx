@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Responsive, WidthProvider } from 'react-grid-layout';
 import KPICard from './KPICard';
@@ -89,8 +88,8 @@ const Dashboard: React.FC = () => {
     }
   ];
 
-  const onLayoutChange = (layout: LayoutItem[], layouts: { [key: string]: LayoutItem[] }) => {
-    setLayouts(layouts);
+  const onLayoutChange = (layout: LayoutItem[], allLayouts: { [key: string]: LayoutItem[] }) => {
+    setLayouts({ lg: allLayouts.lg || layout });
   };
 
   return (
