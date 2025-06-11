@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -116,56 +115,56 @@
 }
 
 .kpi-title {
-  font-size: 4cqw;
+  font-size: clamp(0.875rem, 4cqw, 2rem);
   line-height: 1.2;
   font-weight: 600;
 }
 
 .kpi-value {
-  font-size: 12cqw;
+  font-size: clamp(1.5rem, 12cqw, 4rem);
   line-height: 1.1;
   font-weight: 700;
 }
 
 .kpi-subtitle {
-  font-size: 3cqw;
+  font-size: clamp(0.75rem, 3cqw, 1.25rem);
   line-height: 1.3;
 }
 
-/* Icon sizing proportional to container */
+/* Icon sizing proportional to container with minimum size */
 .kpi-icon {
-  width: 6cqw;
-  height: 6cqw;
+  width: clamp(20px, 6cqw, 48px);
+  height: clamp(20px, 6cqw, 48px);
   min-width: 16px;
   min-height: 16px;
 }
 
-/* Button sizing proportional to container */
+/* Button sizing proportional to container with minimum size */
 .kpi-button {
-  font-size: 3.5cqw;
-  padding: 2cqw 4cqw;
+  font-size: clamp(0.875rem, 3.5cqw, 1.125rem);
+  padding: clamp(8px, 2cqw, 16px) clamp(12px, 4cqw, 24px);
 }
 
-/* Stats text sizing */
+/* Stats text sizing with minimum sizes */
 .kpi-stats-label {
-  font-size: 2.5cqw;
+  font-size: clamp(0.75rem, 2.5cqw, 1rem);
 }
 
 .kpi-stats-value {
-  font-size: 2.8cqw;
+  font-size: clamp(0.75rem, 2.8cqw, 1rem);
 }
 
-/* Spacing proportional to container size */
+/* Spacing proportional to container size with minimums */
 .kpi-content {
-  padding: 4cqw;
+  padding: clamp(12px, 4cqw, 24px);
 }
 
 .kpi-gap {
-  gap: 2cqw;
+  gap: clamp(8px, 2cqw, 16px);
 }
 
 .kpi-margin {
-  margin: 1.5cqw 0;
+  margin: clamp(6px, 1.5cqw, 12px) 0;
 }
 
 /* React Grid Layout Styles */

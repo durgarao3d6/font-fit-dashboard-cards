@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Responsive, WidthProvider } from 'react-grid-layout';
 import KPICard from './KPICard';
@@ -12,14 +13,16 @@ interface LayoutItem {
   y: number;
   w: number;
   h: number;
+  minW?: number;
+  minH?: number;
 }
 
 const Dashboard: React.FC = () => {
   const [layouts, setLayouts] = useState<{ [key: string]: LayoutItem[] }>({
     lg: [
-      { i: 'exceptions', x: 0, y: 0, w: 4, h: 4 },
-      { i: 'expedites', x: 4, y: 0, w: 4, h: 4 },
-      { i: 'orders', x: 8, y: 0, w: 4, h: 4 },
+      { i: 'exceptions', x: 0, y: 0, w: 4, h: 4, minW: 3, minH: 3 },
+      { i: 'expedites', x: 4, y: 0, w: 4, h: 4, minW: 3, minH: 4 },
+      { i: 'orders', x: 8, y: 0, w: 4, h: 4, minW: 3, minH: 3 },
     ]
   });
 
